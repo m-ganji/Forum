@@ -100,7 +100,7 @@ export default function Forum() {
 
   return (
     <div className="space-y-6">
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center px-4 sm:px-0">
         <Input
           type="text"
           value={newPost}

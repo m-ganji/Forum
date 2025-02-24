@@ -151,7 +151,7 @@ export default function Post({ post, addReply, handleVote, depth }: PostProps) {
               disabled={isReplying}
             >
               {isReplying ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
-              <span>ارسال پاسخ</span>
+              <span className="whitespace-nowrap">ارسال پاسخ</span>
             </Button>
           </div>
         )}
