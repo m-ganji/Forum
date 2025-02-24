@@ -111,7 +111,7 @@ export default function Forum() {
         />
         <Button onClick={addPost} className="flex items-center gap-2 px-5 py-2.5 rounded-full" disabled={isPosting}>
           {isPosting ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
-          <span>ارسال پست</span>
+          <span className="whitespace-nowrap">ارسال پست</span>
         </Button>
       </div>
       <div className="space-y-6">
