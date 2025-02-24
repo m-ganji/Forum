@@ -100,27 +100,31 @@ export default function Forum() {
 
   return (
     <div className="space-y-6">
-      <div className="flex gap-2 items-center">
-        <Input
-          type="text"
-          value={newPost}
-          onChange={(e) => setNewPost(e.target.value)}
-          placeholder="پست جدیدی بنویسید..."
-          className="flex-grow text-base"
-          disabled={isPosting}
-        />
-        <Button
-          onClick={addPost}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full"
-          disabled={isPosting}
-        >
-          {isPosting ? (
-            <Loader2 className="h-5 w-5 animate-spin" />
-          ) : (
-            <Send className="h-5 w-5" />
-          )}
-          <span className="whitespace-nowrap">ارسال پست</span>
-        </Button>
+      <div className="flex  items-center">
+        <div className="flex sm:gap-2 gap-1 flex-grow items-center border rounded">
+          <Input
+            type="text"
+            value={newPost}
+            onChange={(e) => setNewPost(e.target.value)}
+            placeholder="پست جدیدی بنویسید..."
+            className="flex-grow text-base border-none"
+            disabled={isPosting}
+          />
+          <Button
+            onClick={addPost}
+            className="flex items-center gap-2 px-1 py-2.5 rounded-full"
+            disabled={isPosting}
+          >
+            {isPosting ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              <Send className="h-5 w-5" />
+            )}
+            <span className="whitespace-nowrap hidden sm:inline">
+              ارسال پست
+            </span>
+          </Button>
+        </div>
       </div>
       <div className="space-y-6">
         {posts.map((post) => (
