@@ -28,11 +28,13 @@ export default function Forum() {
     return () => clearInterval(timer);
   }, []);
 
-  const addPost = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent page reload
+
     if (newPost.trim()) {
       setIsPosting(true);
-      // Simulate network delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
+
       setPosts((prevPosts) => [
         {
           id: Date.now().toString(),
@@ -44,6 +46,7 @@ export default function Forum() {
         },
         ...prevPosts,
       ]);
+
       setNewPost("");
       setIsPosting(false);
     }
@@ -100,18 +103,19 @@ export default function Forum() {
 
   return (
     <div className="space-y-6">
-      <div className="flex  items-center">
-        <div className="flex sm:gap-2 gap-1 flex-grow items-center border rounded">
+      {/* Form for posting */}
+      <form onSubmit={handleSubmit} className="flex items-center">
+        <div className="flex w-full !border-none gap-2">
           <Input
             type="text"
             value={newPost}
             onChange={(e) => setNewPost(e.target.value)}
             placeholder="پست جدیدی بنویسید..."
-            className="flex-grow text-base border-none"
+            className="flex-grow text-base truncate rounded-xl"
             disabled={isPosting}
           />
           <Button
-            onClick={addPost}
+            type="submit" // Ensures Enter submits the form
             className="flex items-center gap-2 px-1 py-2.5 rounded-full"
             disabled={isPosting}
           >
@@ -125,7 +129,9 @@ export default function Forum() {
             </span>
           </Button>
         </div>
-      </div>
+      </form>
+
+      {/* Posts List */}
       <div className="space-y-6">
         {posts.map((post) => (
           <Post
