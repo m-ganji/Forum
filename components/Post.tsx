@@ -77,15 +77,13 @@ export default function Post({ post, addReply, handleVote, depth }: PostProps) {
     }
   };
 
-  const marginClass = depth === 0 ? "" : "mr-4";
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       id={post.id}
-      className={`bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-md transition-shadow duration-300 ${marginClass} mb-4`}
+      className={`bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-md transition-shadow duration-300  mb-4`}
     >
       <div className="flex flex-col">
         <div className="flex justify-between items-start mb-2">
